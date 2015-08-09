@@ -38,3 +38,10 @@ end
     action :run
   end
 end
+
+iptables_rule 'port_containerfarm' do
+  variables(
+    :startport => node['containerfarm']['baseport'],
+    :endport   => node['containerfarm']['baseport'] + node['containerfarm']['instances']
+  )
+end
